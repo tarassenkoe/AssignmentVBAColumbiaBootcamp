@@ -1,0 +1,109 @@
+Sub MacroFinal()
+'
+' MacroFinal Macro
+'
+
+'
+    Range("H1").Select
+    ActiveCell.FormulaR1C1 = "<stock>"
+    Range("H2").Select
+    Application.CutCopyMode = False
+    ActiveCell.FormulaR1C1 = "=RC[-7]"
+    Range("H2").Select
+    Selection.AutoFill Destination:=Range("H2:H759001")
+    Range("H2:H759001").Select
+    Range("I1").Select
+    ActiveCell.FormulaR1C1 = "<price change>"
+    Range("I2").Select
+    Application.CutCopyMode = False
+    ActiveCell.FormulaR1C1 = "=RC[-3]-RC[-6]"
+    Range("I2").Select
+    Selection.AutoFill Destination:=Range("I2:I759001")
+    Range("I2:I759001").Select
+    Range("J1").Select
+    ActiveCell.FormulaR1C1 = "<percent price change>"
+    Range("J2").Select
+    Application.CutCopyMode = False
+    ActiveCell.FormulaR1C1 = "=(RC[-4]-RC[-7])/RC[-4]"
+    Range("J2").Select
+    Selection.AutoFill Destination:=Range("J2:J759001")
+    Range("J2:J759001").Select
+    Range("K1").Select
+    ActiveCell.FormulaR1C1 = "total stock volume"
+    Range("K2").Select
+    Application.CutCopyMode = False
+    ActiveCell.FormulaR1C1 = "=RC[-4]*RC[-5]"
+    Range("K2").Select
+    Selection.AutoFill Destination:=Range("K2:K759001")
+    Range("K2:K759001").Select
+    Range("N8").Select
+    ActiveCell.FormulaR1C1 = "Lowest Price Change"
+    Range("N9").Select
+    ActiveCell.FormulaR1C1 = "Highest Price Change"
+    Range("N10").Select
+    ActiveCell.FormulaR1C1 = "Total Stock Volume Change"
+    Range("O7").Select
+    ActiveCell.FormulaR1C1 = "Stock"
+    Range("P7").Select
+    ActiveCell.FormulaR1C1 = "Change"
+    Columns("A:K").Select
+    Range("K1").Activate
+    ActiveWorkbook.Worksheets("2020").Sort.SortFields.Clear
+    ActiveWorkbook.Worksheets("2020").Sort.SortFields.Add2 Key:=Range( _
+        "I2:I759001"), SortOn:=xlSortOnValues, Order:=xlAscending, DataOption:= _
+        xlSortNormal
+    With ActiveWorkbook.Worksheets("2020").Sort
+        .SetRange Range("A1:K759001")
+        .Header = xlYes
+        .MatchCase = False
+        .Orientation = xlTopToBottom
+        .SortMethod = xlPinYin
+        .Apply
+    End With
+    Range("O8").Select
+    ActiveCell.FormulaR1C1 = "YRYI"
+    Range("P8").Select
+    ActiveCell.FormulaR1C1 = "-0.3103"
+    Columns("A:K").Select
+    Range("K1").Activate
+    ActiveWorkbook.Worksheets("2020").Sort.SortFields.Clear
+    ActiveWorkbook.Worksheets("2020").Sort.SortFields.Add2 Key:=Range( _
+        "I2:I759002"), SortOn:=xlSortOnValues, Order:=xlDescending, DataOption:= _
+        xlSortNormal
+    With ActiveWorkbook.Worksheets("2020").Sort
+        .SetRange Range("A1:K759002")
+        .Header = xlYes
+        .MatchCase = False
+        .Orientation = xlTopToBottom
+        .SortMethod = xlPinYin
+        .Apply
+    End With
+    Range("P9").Select
+    ActiveCell.FormulaR1C1 = ""
+    Range("P9").Select
+    ActiveCell.FormulaR1C1 = "0.042548"
+    Range("O9").Select
+    ActiveCell.FormulaR1C1 = "YRYI"
+    Columns("A:K").Select
+    Range("K1").Activate
+    ActiveWorkbook.Worksheets("2020").Sort.SortFields.Clear
+    ActiveWorkbook.Worksheets("2020").Sort.SortFields.Add2 Key:=Range( _
+        "K2:K759003"), SortOn:=xlSortOnValues, Order:=xlDescending, DataOption:= _
+        xlSortNormal
+    With ActiveWorkbook.Worksheets("2020").Sort
+        .SetRange Range("A1:K759003")
+        .Header = xlYes
+        .MatchCase = False
+        .Orientation = xlTopToBottom
+        .SortMethod = xlPinYin
+        .Apply
+    End With
+    Range("P10").Select
+    Application.CutCopyMode = False
+    ActiveCell.FormulaR1C1 = "=R[-8]C[-5]"
+    Range("O10").Select
+    ActiveCell.FormulaR1C1 = ""
+    Range("O10").Select
+    ActiveCell.FormulaR1C1 = "QKN"
+    Range("O11").Select
+End Sub
